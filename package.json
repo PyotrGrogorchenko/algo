@@ -3,24 +3,19 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "jest": "jest",
-    "mocha": "mocha"
-  },
+  "type": "module",
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PyotrGrogorchenko/algo.git"
   },
-  "author": "",
+  "author": "PyotrPetrovich",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/PyotrGrogorchenko/algo/issues"
   },
   "homepage": "https://github.com/PyotrGrogorchenko/algo#readme",
-  "devDependencies": {
-    "chai": "^4.3.4",
-    "jest": "^27.4.3",
-    "mocha": "^9.1.3",
-    "typescript": "^4.5.2"
+  "dependencies": {
+    "@ip-algorithmics/codeforces-io": "1.1.2"
   }
 }
