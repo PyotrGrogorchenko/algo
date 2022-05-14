@@ -3,7 +3,6 @@ const isBalanced = (str) => {
     return true
   }
   
-  const isOpen = (char) => ['{', '[', '('].includes(char)
   const isPair = (open, close) => ['{}', '[]', '()'].includes(open.concat(close))
   
   const stack = []

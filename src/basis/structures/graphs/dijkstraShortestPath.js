@@ -3,14 +3,15 @@ const dijkstra = (graph, start = 'a') => {
   const queue = [{[start]: 0}]
   while (queue.length) {
     const [curVert, curCost] = Object.entries(queue.shift())[0]
-    Object.entries(graph[curVert]).forEach((adjacent, index) => {
+    Object.entries(graph[curVert]).forEach((adjacent) => {
       const [adjacentVer, adjacentCost] = adjacent
-      if (costs[curVert] + adjacentCost < (costs[adjacentVer] || Infinity)) {
-        costs[adjacentVer] = costs[curVert] + adjacentCost
+      if (curCost + adjacentCost < (costs[adjacentVer] || Infinity)) {
+        costs[adjacentVer] = curCost + adjacentCost
         queue.push({[adjacentVer]: costs[adjacentVer]}) 
       }
     })
   }
+  costs[start] = 0
   return costs
 }
 
@@ -23,9 +24,10 @@ const graph = {
   e: {d: 1, g: 2},
   f: {a: 5, c: 7, g: 100, h: 3},
   g: {c: 10, e: 2, f: 100, h: 8, i: 100},
-  h: {f: 3, g: 7, j: 1},
+  h: {f: 3, g: 8, j: 1},
   i: {g: 100, j: 1},
   j: {h: 1, i: 1}
 }
 
 console.log(dijkstra(graph))
+console.log(dijkstra(graph, 'b'))
