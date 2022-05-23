@@ -1,14 +1,11 @@
 // https://leetcode.com/problems/binary-tree-inorder-traversal/
-import { _makeTree } from '../_makeTree.js'
-
-const treeNum = [1, 2, 3, 4, 5, 6, 7, 8, 9, null, 11, null, null, 14]
-const tree = _makeTree(treeNum)
+import { _makeTree } from '../_tree.js'
 
 /**
  * @param {TreeNode} root
  * @return {number[]}
  */
-var inorderTraversal = function(root) {
+var inorderTraversal = root => {
   const traversal = (res, node) => {
     if (node === null) return
     traversal(res, node.left)
@@ -21,19 +18,21 @@ var inorderTraversal = function(root) {
   return res
 }
 
-console.log(inorderTraversal(tree[0]).toString())
-
-var inorderTraversalNum = function(rootIndex) {
+var inorderTraversalNum = arr => {
   const traversalNum = (res, index) => {
-    if (!treeNum[index]) return
+    if (treeNum[index] === undefined) return
     traversalNum(res, index * 2 + 1)
     res.push(treeNum[index])
     traversalNum(res, index * 2 + 2)
   }
 
   const res = []
-  traversalNum(res, rootIndex)
+  traversalNum(res, 0)
   return res
 }
 
-console.log(inorderTraversalNum(0).toString())
+const treeNum = [1, 2, 3, 4, 5, 6, 7, 8, 9, null, 11, null, null, 14]
+const treeRoot = _makeTree(treeNum)
+
+console.log(inorderTraversal(treeRoot).toString())
+console.log(inorderTraversalNum(treeNum).toString())

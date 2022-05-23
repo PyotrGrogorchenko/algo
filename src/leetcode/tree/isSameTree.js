@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/same-tree/
-import { _makeTree } from './_makeTree.js'
+import { _makeTree } from './_tree.js'
 
 /**
  * @param {TreeNode} p
@@ -22,6 +22,6 @@ var isSameTree = function(p, q) {
   return true
 }
 
-console.log(isSameTree(_makeTree([1,2,3])[0], _makeTree([1,2,3])[0]))
-console.log(isSameTree(_makeTree([1,2])[0], _makeTree([1,null,2])[0]))
-console.log(isSameTree(_makeTree([1,2,1])[0], _makeTree([1,1,2])[0]))
+console.log(isSameTree(_makeTree([1,2,3]), _makeTree([1,2,3])))
+console.log(isSameTree(_makeTree([1,2]), _makeTree([1,null,2])))
+console.log(isSameTree(_makeTree([1,2,1]), _makeTree([1,1,2])))

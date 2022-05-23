@@ -1,4 +1,4 @@
-import { _makeTree } from '../_makeTree.js'
+import { _makeTree } from '../_tree.js'
 
 /**
  * @param {TreeNode} root
@@ -16,4 +16,4 @@ const bftTraversal = root => {
   return res
 }
 
-console.log(bftTraversal(_makeTree([1, 2, 3, 4, 5, 6, 7, 8, 9, null, 11, null, null, 14])[0])) // false
+console.log(bftTraversal(_makeTree([1, 2, 3, 4, 5, 6, 7, 8, 9, null, 11, null, null, 14])))

@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/symmetric-tree/
-import { _makeTree } from './_makeTree.js'
+import { _makeTree } from './_tree.js'
 
 /**
  * @param {TreeNode} root
@@ -24,5 +24,5 @@ var isSymmetric = function(root) {
   return true
 }
 
-console.log(isSymmetric(_makeTree([1,2,2,3,4,4,3])[0]))
-console.log(isSymmetric(_makeTree([1,2,2,null,3,null,3])[0]))
+console.log(isSymmetric(_makeTree([1,2,2,3,4,4,3]))) // true
+console.log(isSymmetric(_makeTree([1,2,2,null,3,null,3]))) // false
