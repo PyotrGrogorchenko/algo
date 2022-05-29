@@ -5,41 +5,53 @@
  * @return {string[][]}
  */
 var solveNQueens = function(n) {
-  const result = []
+  const res = []
   
-  const col = []
-  const diagL = []
-  const diagR = []
-
-  const queens = (row, startColumn, res) => {
-    for (let column = startColumn; column < n; column++) {
-      if (col[column] || diagL[column + row] || diagR[row - column + (n - 1)]) continue
-      
-      col[column] = diagL[column + row] = diagR[row - column + (n - 1)] = 1
-      
-      const resItem = new Array(n).fill('.')
-      resItem[column] = 'Q'
-      res.push(resItem.join(''))
-      queens(row + 1, 0, res)
+  const col = []  
+  const diagL = []  
+  const diagR = []  
+  const board = []
+  
+  const queens = (row = 0) => {
+    
+    if (row === n) {
+      res.push([...board])
+      return
     }
-}
-
-  for (let i = 0; i < n; i++) {
-    col.length = 0
-    diagL.length = 0
-    diagR.length = 0
-  
-    const res = []
-    queens(0, i, res)
-    console.log(res)
-    if (res.length === n) result.push(res)
+    
+    for (let column = 0; column < n; column++) {
+      if (!col[column] && !diagL[column + row] && !diagR[row - column + (n - 1)]) {
+      
+        const resItem = new Array(n).fill('.')
+        resItem[column] = 'Q'
+        board[row] = resItem.join('')
+        
+        col[column] = diagL[column + row] = diagR[row - column + (n - 1)] = 1
+        queens(row + 1)
+        col[column] = diagL[column + row] = diagR[row - column + (n - 1)] = 0
+        board[row] = null
+      }
+    }
   }
 
-  return result
+  queens()
+
+  return res
 }
 
-// console.log(solveNQueens(1))
+console.log('n=1')
+console.log(solveNQueens(1))
+console.log('n=2')
 console.log(solveNQueens(2))
-// console.log(solveNQueens(3))
-// console.log(solveNQueens(4))
+console.log('n=3')
+console.log(solveNQueens(3))
+console.log('n=4')
+console.log(solveNQueens(4))
+console.log('n=5')
+// console.log(solveNQueens(5))
+// console.log('n=6')
+// console.log(solveNQueens(6))
+// console.log('n=7')
+// console.log(solveNQueens(7))
+// console.log('n=8')
 // console.log(solveNQueens(8))

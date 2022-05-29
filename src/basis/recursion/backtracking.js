@@ -4,7 +4,7 @@ const queens = (n, row, col, diag1, diag2) => {
   if (!diag1) diag1 = new Array(n * 2 - 1).fill(0)
   if (!diag2) diag2 = new Array(n * 2 - 1).fill(0)
 
-  if (row === n) return true
+  if (row === n) return 1
 
   let res = 0
   for (let column = 0; column < n; column++) {
@@ -17,6 +17,9 @@ const queens = (n, row, col, diag1, diag2) => {
   return res
 }
 
-for (let n = 1; n <= 12; n++) {
-  console.log(n + '=', queens(n))
-}
+// for (let n = 1; n <= 12; n++) {
+//   console.log(n + '=', queens(n))
+// }
+
+console.log(queens(8))
+// console.log(queens(4))
