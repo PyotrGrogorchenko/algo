@@ -1,1 +1,1 @@
-<iframe src="https://leetcode.com/PePeGrigorchenko/" width="100%" height="100%"></iframe>
+[![KnlnKS's LeetCode stats](https://leetcode-stats-six.vercel.app/api?username=PePeGrigorchenko&theme=dark)](https://leetcode.com/PePeGrigorchenko/)
