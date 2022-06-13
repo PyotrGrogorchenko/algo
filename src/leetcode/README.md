@@ -1,7 +1,9 @@
-# leetcode
-
-<meta property="og:title" content="">
-<meta property="og:site_name" content="">
-<meta property="og:url" content="https://leetcode.com/PePeGrigorchenko/">
-<meta property="og:description" content="">
-<meta property="og:image" content="">
+<html>
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://bureau.ru/vacancies/visualizer/" />
+   ​
+<meta property="og:title" content="Вакансия визуализатора в бюро" />
+<meta property="og:description" content="Ищем визуализатора в Бюро Горбунова" />
+    ​
+<meta property="og:image" content="https://bureau.ru/vacancies/visualizer/og.jpg" />
+</html>
