@@ -1,18 +1,20 @@
-const partition  = (arr, i, j) => {
-  let current = i
-  for (let k = i + 1; k < j; k++) {
-    if (arr[k] < arr[i]) {
-      current++
-      [arr[current], arr[k]] = [arr[k], arr[current]]
-    }
-  }
-  [arr[i], arr[current]] = [arr[current], arr[i]]
-  return current
-}
-
 const quick = (arr, i = 0, j = arr.length) => {
   if (i === j) return
-  const pivot = partition(arr, i, j)
+
+  const partition  = (i, j) => {
+    let current = i
+    for (let k = i + 1; k < j; k++) {
+      if (arr[k] < arr[i]) {
+        current++
+        [arr[current], arr[k]] = [arr[k], arr[current]]
+      }
+    }
+    [arr[i], arr[current]] = [arr[current], arr[i]]
+    return current
+  }
+  
+
+  const pivot = partition(i, j)
   quick(arr, i, pivot)
   quick(arr, pivot + 1, j)
   return arr
