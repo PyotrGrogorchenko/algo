@@ -50,9 +50,9 @@ def read_data(data):
     solve(n, points)
 
 
-# for file_name in os.listdir(path='tests'):
-#     file_data = open(f'tests/{file_name}')
-#     read_data(file_data)
+for file_name in os.listdir(path='tests'):
+    file_data = open(f'tests/{file_name}')
+    read_data(file_data)
 
-read_data(sys.stdin)
+# read_data(sys.stdin)
 
