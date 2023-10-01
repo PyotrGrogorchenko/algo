@@ -19,7 +19,7 @@ def solve(n, points):
     g = []
     for i in range(n):
         x1, y1 = points[i]
-        for j in range(n):
+        for j in range(i + 1, n):
             x2, y2 = points[j]
             x = abs(x1 - x2)
             y = abs(y1 - y2)
