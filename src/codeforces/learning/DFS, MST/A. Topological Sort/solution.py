@@ -50,9 +50,9 @@ def read_data(data):
 # for file_name in os.listdir(path='tests'):
 #     file_data = open(f'tests/{file_name}')
 
-# read_data(open('tests/001.txt'))
-# read_data(open('tests/002.txt'))
-# read_data(open('tests/003.txt'))
-# read_data(open('tests/004.txt'))
+read_data(open('tests/001.txt'))
+read_data(open('tests/002.txt'))
+read_data(open('tests/003.txt'))
+read_data(open('tests/004.txt'))
 
-read_data(sys.stdin)
+# read_data(sys.stdin)
