@@ -39,26 +39,30 @@ def solve(n, nums, cmd):
         return min(get_min(node.L, l, r), get_min(node.R, l, r))
 
     def update_set(node, l, r, x):
+        push(node)
         nl = node.l
         nr = node.r
         if nl > r or nr < l:
-            return float('inf')
+            return node.v
         if nl >= l and nr <= r:
             node.v = x
             node.set = x
-            return x
-        return min(update_set(node.L, l, r, x), update_set(node.R, l, r, x))
+            return node.v
+        node.v = min(update_set(node.L, l, r, x), update_set(node.R, l, r, x))
+        return node.v
 
     def update_add(node, l, r, x):
+        push(node)
         nl = node.l
         nr = node.r
         if nl > r or nr < l:
-            return
+            return node.v
         if nl >= l and nr <= r:
-            node.v = x
+            node.v += x
             node.add = x
-            return x
-        return min(update_add(node.L, l, r, x), update_add(node.R, l, r, x))
+            return node.v
+        node.v = min(update_add(node.L, l, r, x), update_add(node.R, l, r, x))
+        return node.v
 
     def push(node):
         if node.l == node.r:
@@ -69,15 +73,16 @@ def solve(n, nums, cmd):
                 node.L.set = node.set
             if node.add is not None:
                 node.L.v += node.add
-                node.L.set = node.add
+                node.L.add = node.add
         if node.R is not None:
             if node.set is not None:
                 node.R.v = node.set
                 node.R.set = node.set
             if node.add is not None:
                 node.R.v += node.add
-                node.R.set = node.add
+                node.R.add = node.add
         node.set = None
+        node.add = None
 
     h = math.ceil(math.log(n, 2))
     root = build(0, n - 1)
@@ -87,7 +92,7 @@ def solve(n, nums, cmd):
         if c[0] == 'set':
             update_set(root, c[1], c[2], c[3])
         if c[0] == 'add':
-            update_set(root, c[1], c[2], c[3])
+            update_add(root, c[1], c[2], c[3])
 
 
 def read_data(resource):
@@ -111,4 +116,4 @@ read_data(open('tests/001.txt'))
 print('test 002')
 read_data(open('tests/002.txt'))
 
-# read_data(sys.stdin)
+read_data(sys.stdin)
