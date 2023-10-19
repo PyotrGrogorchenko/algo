@@ -1,53 +1,46 @@
 import math
 from typing import List
 
+class Node:
+    def __init__(self, v=0, l=None, r=None, L=None, R=None):
+        self.v = v
+        self.L = L
+        self.R = R
+        self.count = 0
+        self.smaller = 0
 
 class Solution:
 
     def countSmaller(self, nums: List[int]) -> List[int]:
-        def build(l, r):
-            if l == r:
-                return {'l': l, 'r': r, 'v': nums[l], 'c': 0}
-            else:
-                m = math.floor((l + r) / 2)
-                n = {
-                    'L': build(l, m),
-                    'R': build(m + 1, r),
-                    'l': l,
-                    'r': r,
-                    'c': 0
-                }
-                # n['c'] = n['L']['c'] + n['R']['c']
-                if nums[l] > nums[r]:
-                    n['c'] += 1
-                    n['c'] += n['R']['c'] + n['L']['c']
+        def ins(num):
+            node = root
+            sum = 0
 
-                return n
+            while node.v != num:
+                if num < node.v:
+                    if not node.L:
+                        node.L = Node(num)
+                    node.smaller += 1
+                    node = node.L
+                else:
+                    sum += node.smaller + node.count
+                    if not node.R:
+                        node.R = Node(num)
+                    node = node.R
+            node.count += 1
+            return sum + node.smaller
 
-        def get_sum(n, l, r):
-            if n['l'] >= l and n['r'] <= r:
-                return n['c']
-            if n['l'] < l and n['r'] < r:
-                return 0
-            s = get_sum(n['L'], l, r) + get_sum(n['R'], l, r)
-            # if nums[n['L']['r']] > nums[n['R']['l']]:
-            #     s += 1
-            return s
-
-
-        root = build(0, len(nums) - 1)
-
-        res = []
-        for i in range(len(nums)):
-            res.append(get_sum(root, i, len(nums) - 1))
-        print(res)
-
+        root = Node(nums[-1])
+        res = [0] * len(nums)
+        for i in range(len(nums)-1, -1, -1):
+            res[i] = ins(nums[i])
+        return res
 
 s = Solution()
-s.countSmaller([4,3,2,1])
-s.countSmaller([3,2,1])
-s.countSmaller([10,9,8,7,6,5,4,3,2,1,0])
-s.countSmaller([5,2,6,1])
-s.countSmaller([-1])
-s.countSmaller([-1,-1])
-s.countSmaller([-1,-2,-3,-4,-5,-6,-7,-8,-9])
+print(s.countSmaller([4,3,2,1]))
+print(s.countSmaller([3,2,1]))
+print(s.countSmaller([10,9,8,7,6,5,4,3,2,1,0]))
+print(s.countSmaller([5,2,6,1]))
+print(s.countSmaller([-1]))
+print(s.countSmaller([-1,-1]))
+print(s.countSmaller([-1,-2,-3,-4,-5,-6,-7,-8,-9]))
