@@ -10,7 +10,7 @@ class Node:
 
 class Trie:
     def __init__(self):
-        self.root = Node('root')
+        self.root = Node('$root')
         self.lastCode = -1
         for c in 'abcdefghijklmnopqrstuvwxyz':
             self.ins(c)
@@ -67,5 +67,8 @@ solve(open('tests/002.txt'))
 
 print('test 003')
 solve(open('tests/003.txt'))
+
+print('test 004')
+solve(open('tests/004.txt'))
 
 # solve(sys.stdin)
